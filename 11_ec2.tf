@@ -24,13 +24,7 @@ resource "aws_instance" "yslee_weba" {
   private_ip = "10.0.0.11"
   subnet_id = aws_subnet.yslee_puba.id  #public_subnet a의 ID
   vpc_security_group_ids = [aws_security_group.yslee_sg.id]
-  user_data = <<-EOF
-                #!/bin/bash
-                sudo su -
-                yum install -y httpd
-                echo "YSLEE-Terraform-1" >> /var/www/html/index.html
-                systemctl start httpd
-                EOF
+  user_data = file("./install1.sh")
 }
 
 resource "aws_eip" "yslee_weba_ip" {
