@@ -34,3 +34,23 @@ resource "aws_subnet" "yslee_pric" {
     "Name" = "yslee-pric"
   }
 }
+
+# 가용영역 a의 private DB subnet
+resource "aws_subnet" "yslee_pridba" {
+  vpc_id = aws_vpc.yslee1_vpc.id
+  cidr_block = "10.0.4.0/24"
+  availability_zone = "ap-northeast-2a"
+  tags = {
+    "Name" = "yslee-pridba"
+  }
+}
+
+# 가용영역 c의 private DB subnet
+resource "aws_subnet" "yslee_pridbc" {
+  vpc_id = aws_vpc.yslee1_vpc.id
+  cidr_block = "10.0.5.0/24"
+  availability_zone = "ap-northeast-2c"
+  tags = {
+    "Name" = "yslee-pridbc"
+  }
+}
