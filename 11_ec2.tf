@@ -41,3 +41,7 @@ resource "aws_eip" "yslee_weba_ip" {
     aws_internet_gateway.yslee_ig
   ]
 }
+
+output "public_ip" {
+  value = aws_instance.yslee_weba.public_ip
+}
